@@ -2,6 +2,12 @@ odoo.define(
   "owl_tutorial_extend_override_components.utils",
   function (require) {
     "use strict";
+    class AlreadyDefinedPatchError extends Error {
+      constructor() {
+        super(...arguments);
+        this.name = "AlreadyDefinedPatchError";
+      }
+    }
     const classPatchMap = new WeakMap();
     const instancePatchMap = new WeakMap();
     var utils = {
